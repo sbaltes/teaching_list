@@ -124,7 +124,7 @@ public class List {
     }
 
     public boolean isEmpty() {
-        return (begin == null) && (end == null) && (length == 0);
+        return begin == null && end == null && length == 0;
     }
 
     /**
@@ -138,7 +138,7 @@ public class List {
             Element pos = begin;
             Element pred = null;
             // Suche die Position pos, vor der das Element eingefügt werden soll.
-            while ((pos != null) && (pos.getValue() < e.getValue())) {
+            while (pos != null && pos.getValue() < e.getValue()) {
                 pred = pos;
                 pos = pos.getNext();
             }
