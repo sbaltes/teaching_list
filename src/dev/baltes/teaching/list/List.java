@@ -158,7 +158,7 @@ public class List {
         }
     }
 
-    // duplicate method to trigger PMD CPD warning
+    // TODO: remove duplicate method used to trigger PMD CPD warning
     public void insert_dup(Element e) {
         if (isEmpty()) { // If the list is empty, just append the new element
             append(e);
