@@ -2,41 +2,60 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>FST18</name>
-    <groupId>de.unitrier.st.fst18</groupId>
+    <name>Doubly linked list implementation for teaching purposes</name>
+    <groupId>dev.baltes.teaching.list</groupId>
     <artifactId>list</artifactId>
-    <version>0.1</version>
-    <url>https://github.com/sbaltes/fst18</url>
+    <version>0.2</version>
+    <url>https://github.com/sbaltes/teaching_list</url>
 
     <properties>
+        <java.version>11</java.version>
+
         <!-- Project -->
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <project.build.sourceDirectory>src</project.build.sourceDirectory>
         <project.build.testSourceDirectory>tests</project.build.testSourceDirectory>
+
         <!-- Maven -->
-        <maven.mainclass>de.unitrier.st.fst18.list.Main</maven.mainclass>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
-        <maven.jar.plugin.version>3.1.0</maven.jar.plugin.version>
-        <maven.assembly.plugin.version>3.1.0</maven.assembly.plugin.version>
-        <maven.source.plugin.version>3.0.1</maven.source.plugin.version>
-        <maven.javadoc.plugin.version>3.0.1</maven.javadoc.plugin.version>
-        <maven.surefire.plugin.version>2.22.1</maven.surefire.plugin.version>
-        <maven.site.plugin.version>3.7.1</maven.site.plugin.version>
-        <!-- latest version of report plugin not compatible with site plugin, see https://stackoverflow.com/a/51099913 -->
-        <maven.projectinforeports.plugin.version>2.9</maven.projectinforeports.plugin.version>
-        <maven.pmd.plugin.version>3.11.0</maven.pmd.plugin.version>
+
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.mainclass>dev.baltes.teaching.list.Main</maven.mainclass>
+
+        <!-- Maven Plugins -->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
+        <maven.jar.plugin.version>3.2.0</maven.jar.plugin.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-assembly-plugin -->
+        <maven.assembly.plugin.version>3.3.0</maven.assembly.plugin.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-source-plugin -->
+        <maven.source.plugin.version>3.2.1</maven.source.plugin.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-javadoc-plugin -->
+        <maven.javadoc.plugin.version>3.2.0</maven.javadoc.plugin.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
+        <maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-deploy-plugin -->
+        <maven.deploy.plugin.version>3.0.0-M1</maven.deploy.plugin.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-site-plugin -->
+        <maven.site.plugin.version>3.8.2</maven.site.plugin.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-project-info-reports-plugin -->
+        <maven.projectinforeports.plugin.version>3.1.0</maven.projectinforeports.plugin.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-pmd-plugin -->
+        <maven.pmd.plugin.version>3.13.0</maven.pmd.plugin.version>
+
         <!-- JUnit -->
-        <junit.jupiter.version>LATEST</junit.jupiter.version>
-        <hamcrest.junit.version>LATEST</hamcrest.junit.version>
-        <!-- Other dependencies -->
-        <!-- N/A -->
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+        <junit.jupiter.version>5.5.2</junit.jupiter.version>
+        <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-junit -->
+        <hamcrest.junit.version>2.0.0.0</hamcrest.junit.version>
+
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -49,7 +68,6 @@
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-junit -->
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-junit</artifactId>
@@ -64,7 +82,6 @@
         <testSourceDirectory>${project.build.testSourceDirectory}</testSourceDirectory>
 
         <plugins>
-            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven.compiler.plugin.version}</version>
@@ -73,7 +90,6 @@
                     <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
-            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>${maven.jar.plugin.version}</version>
@@ -85,7 +101,6 @@
                     </archive>
                 </configuration>
             </plugin>
-            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-assembly-plugin -->
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>${maven.assembly.plugin.version}</version>
@@ -109,7 +124,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-source-plugin -->
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>${maven.source.plugin.version}</version>
@@ -123,7 +137,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-javadoc-plugin -->
             <plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven.javadoc.plugin.version}</version>
@@ -137,11 +150,15 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven.deploy.plugin.version}</version>
             </plugin>
         </plugins>
     </build>

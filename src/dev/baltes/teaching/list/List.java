@@ -1,7 +1,7 @@
-package de.unitrier.st.fst18.list;
+package dev.baltes.teaching.list;
 
 /**
- * Doppelt verkettete Liste.
+ * Doubly linked list
  */
 public class List {
     private Element begin;
@@ -9,8 +9,8 @@ public class List {
     private int length;
 
     /**
-     * Füge ein Element am Ende der Liste hinzu.
-     * @param e Neues Listenelement.
+     * Add an element at the end of the list
+     * @param e New list element
      */
     public void append(Element e) {
         if (begin == null) {
@@ -29,16 +29,16 @@ public class List {
     }
 
     /**
-     * Erzeuge ein Element, das den Wert v enthält, und füge es am Ende der Liste hinzu.
-     * @param value Wert des neuen Elements.
+     * Create a new element with the provided value and append it to the list
+     * @param value Value of the new list element
      */
     public void append(double value) {
         append(new Element(value));
     }
 
     /**
-     * Füge die Elemente aus der übergebenen Liste am Ende dieser Liste hinzu.
-     * @param list Die Liste, deren Elemente angefügt werden sollen.
+     * Append all elements in the provided list to this list
+     * @param list The list of which the elements should be appended
      */
     public void append(List list) {
         Element e = list.getBegin();
@@ -50,8 +50,8 @@ public class List {
     }
 
     /**
-     * Erzeuge ein neues Element pro Wert im übergebenen Array und füge die neuen Elemente am Ende der Liste hinzu.
-     * @param values Array mit Double-Werten, die eingefügt werden sollen.
+     * Create one element per value in the array and append the new elements to this list
+     * @param values Array with values to append
      */
     public void append(double[] values) {
         for (double value : values) {
@@ -60,8 +60,8 @@ public class List {
     }
 
     /**
-     * Erzeuge ein Array mit den Elementen aus der Liste (gleiche Reihenfolge).
-     * @return Array mit Elementen der Liste (in gleicher Reihenfolge).
+     * Create a new array with the elements from this list (in the same order)
+     * @return Array with list elements (same order)
      */
     public double[] asArray() {
         double[] array = new double[length];
@@ -76,7 +76,7 @@ public class List {
     }
 
     /**
-     * Gib die Liste auf der Konsole aus.
+     * Print the list to the standard output
      */
     public void print() {
         if (isEmpty()) {
@@ -91,7 +91,7 @@ public class List {
     }
 
     /**
-     * Leere die Liste.
+     * Remove all list elements
      */
     public void empty() {
         begin = null;
@@ -128,29 +128,29 @@ public class List {
     }
 
     /**
-     * Füge Element in einer sortierten Liste an der richtigen Stelle ein.
-     * @param e Einzusortierendes Element.
+     * Add an element at the correct position in a sorted list
+     * @param e Element to insert into the sorted list
      */
     public void insert(Element e) {
-        if (isEmpty()) { // Falls die Liste leer ist, einfach Element hinzufügen
+        if (isEmpty()) { // If the list is empty, just append the new element
             append(e);
-        } else { // Ansonsten Element einsortieren:
+        } else { // Otherwise the element needs to be sorted in...
             Element pos = begin;
             Element pred = null;
-            // Suche die Position pos, vor der das Element eingefügt werden soll.
+            // Find position pos, before which the element is supposed to be located
             while (pos != null && pos.getValue() < e.getValue()) {
                 pred = pos;
                 pos = pos.getNext();
             }
-            if (pos == null) { // Es gibt kein größeres Element in der Liste => am Ende der Liste hinzufügen
+            if (pos == null) { // There is no larger element => append new element to the list
                 append(e);
-            } else { // Füge das Element vor dem Element an der Stelle pos ein.
+            } else { // Add the new element before element at pos
                 e.setNext(pos);
                 pos.setPrev(e);
-                if (pred != null) { // Falls pos nicht das erste Element in der Liste ist:
+                if (pred != null) { // If pos is not first element in list...
                     e.setPrev(pred);
                     pred.setNext(e);
-                } else { // Falls pos das erste Element in der Liste ist:
+                } else { // If pos is the first elementin the list...
                     begin = e;
                 }
                 length++;
@@ -160,7 +160,7 @@ public class List {
 
 
     /**
-     * Die Klasse für die Elemente der doppelt verketteten Liste.
+     * Inner class for doubly linked list elements
      */
     public static class Element {
         private double value;

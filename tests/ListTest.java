@@ -1,4 +1,4 @@
-import de.unitrier.st.fst18.list.List;
+import dev.baltes.teaching.list.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -119,7 +119,10 @@ class ListTest {
         testBeginEndPointers(list);
     }
 
-    /* Hilfsmethode */
+    /**
+     * Helper method to test begin and end pointers of a doubly linked list list
+     * @param list List to test
+     */
     private static void testBeginEndPointers(List list) {
         assertSame(list.getBegin().getNext().getPrev(), list.getBegin());
         assertSame(list.getEnd().getPrev().getNext(), list.getEnd());
