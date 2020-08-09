@@ -158,6 +158,33 @@ public class List {
         }
     }
 
+    // duplicate method to trigger PMD CPD warning
+    public void insert_dup(Element e) {
+        if (isEmpty()) { // If the list is empty, just append the new element
+            append(e);
+        } else { // Otherwise the element needs to be sorted in...
+            Element pos = begin;
+            Element pred = null;
+            // Find position pos, before which the element is supposed to be located
+            while (pos != null && pos.getValue() < e.getValue()) {
+                pred = pos;
+                pos = pos.getNext();
+            }
+            if (pos == null) { // There is no larger element => append new element to the list
+                append(e);
+            } else { // Add the new element before element at pos
+                e.setNext(pos);
+                pos.setPrev(e);
+                if (pred != null) { // If pos is not first element in list...
+                    e.setPrev(pred);
+                    pred.setNext(e);
+                } else { // If pos is the first elementin the list...
+                    begin = e;
+                }
+                length++;
+            }
+        }
+    }
 
     /**
      * Inner class for doubly linked list elements
