@@ -40,6 +40,8 @@
         <maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version>
         <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-pmd-plugin -->
         <maven.pmd.plugin.version>3.13.0</maven.pmd.plugin.version>
+        <!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
+        <jacoco.maven.plugin.version>0.8.5</jacoco.maven.plugin.version>
 
         <!-- JUnit -->
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
@@ -156,6 +158,20 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.maven.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>report</id>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <phase>verify</phase>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
