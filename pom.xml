@@ -44,6 +44,7 @@
         <jacoco.maven.plugin.version>0.8.5</jacoco.maven.plugin.version>
 
         <!-- JUnit -->
+
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
         <junit.jupiter.version>5.5.2</junit.jupiter.version>
         <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-junit -->
@@ -160,6 +161,11 @@
                 <version>${maven.surefire.plugin.version}</version>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${maven.pmd.plugin.version}</version>
+            </plugin>
+            <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>${jacoco.maven.plugin.version}</version>
@@ -172,11 +178,6 @@
                         <phase>verify</phase>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <version>${maven.pmd.plugin.version}</version>
             </plugin>
         </plugins>
     </build>
