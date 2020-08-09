@@ -2,8 +2,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>Doubly linked list implementation for teaching purposes</name>
-    <groupId>dev.baltes.teaching.list</groupId>
+    <name>List</name>
+    <groupId>dev.baltes.teaching</groupId>
     <artifactId>list</artifactId>
     <version>0.2</version>
     <url>https://github.com/sbaltes/teaching_list</url>
@@ -38,12 +38,6 @@
         <maven.javadoc.plugin.version>3.2.0</maven.javadoc.plugin.version>
         <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
         <maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-deploy-plugin -->
-        <maven.deploy.plugin.version>3.0.0-M1</maven.deploy.plugin.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-site-plugin -->
-        <maven.site.plugin.version>3.8.2</maven.site.plugin.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-project-info-reports-plugin -->
-        <maven.projectinforeports.plugin.version>3.1.0</maven.projectinforeports.plugin.version>
         <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-pmd-plugin -->
         <maven.pmd.plugin.version>3.13.0</maven.pmd.plugin.version>
 
@@ -54,6 +48,14 @@
         <hamcrest.junit.version>2.0.0.0</hamcrest.junit.version>
 
     </properties>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven-central</id>
+            <name>maven-central</name>
+            <url>https://repo1.maven.org/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <dependencies>
         <dependency>
@@ -155,26 +157,11 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin.version}</version>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>${maven.deploy.plugin.version}</version>
-            </plugin>
         </plugins>
     </build>
 
     <reporting>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>${maven.site.plugin.version}</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>${maven.projectinforeports.plugin.version}</version>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
