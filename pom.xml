@@ -38,6 +38,12 @@
         <maven.javadoc.plugin.version>3.2.0</maven.javadoc.plugin.version>
         <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
         <maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jxr-plugin -->
+        <maven.jxr.plugin.version>3.0.0</maven.jxr.plugin.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-site-plugin -->
+        <maven.site.plugin.version>3.9.1</maven.site.plugin.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-project-info-reports-plugin -->
+        <maven.project-info-reports.plugin.version>3.1.0</maven.project-info-reports.plugin.version>
         <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-pmd-plugin -->
         <maven.pmd.plugin.version>3.13.0</maven.pmd.plugin.version>
         <!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
@@ -162,8 +168,42 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${maven.site.plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${maven.project-info-reports.plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>${maven.jxr.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-cross-references</id>
+                        <phase>site</phase>
+                        <goals>
+                            <goal>jxr</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>${maven.pmd.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-pmd-report</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>pmd</goal>
+                            <goal>cpd</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
